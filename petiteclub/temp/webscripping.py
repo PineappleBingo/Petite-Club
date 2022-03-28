@@ -43,15 +43,14 @@ products = doc.find_all("li", class_="product")
 
 dresses = dict()
 for idx, product in enumerate(products):
-    url = product.find("a", href=True)
-    name = product.find("strong").string.strip()
+    url = product.select("div > a")[0].get("href")
+    name = product.select("strong")[0].string.strip()
     price = product.select("span.price > span")[0].string
 
     dresses[idx] = {
                         "name" : name,
-                        "url"  : url["href"],
+                        "url"  : url,
                         "price": price
     }
 
 print(dresses[1])
-# print("len:", len(dresses))
