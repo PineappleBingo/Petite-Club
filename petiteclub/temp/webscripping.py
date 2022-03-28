@@ -32,31 +32,26 @@ products = doc.find_all("li", class_="product")
 # for product in products:
 #     print(product.find("strong").string.strip())
 
-product_prices = products[0].find("span", class_="price").contents
-print("product_price:", product_prices)
-
-for product_price in product_prices:
-    # print(product_price)
-    # print("--------------------")
-    print(product_price.select())
-
+# # Select fist element of price
+# product_prices = products[0].select("span.price > span")
+# print("product_price:", product_prices)
 
 # for product in products:
-#     # product_ = product.find("span", class_="price").children
-#     product_ = product.find("span", class_="price").descendants
-#     print(product_)
-#     # product_1 = list(product_)
-#     # print(product_1)
-#     # # print(product_1[3])
+#     product_price = product.select("span.price > span")[0].string
+#     # print(product_price[0].string)
+#     print(product_price)
 
+dresses = dict()
+for idx, product in enumerate(products):
+    url = product.find("a", href=True)
+    name = product.find("strong").string.strip()
+    price = product.select("span.price > span")[0].string
 
-# dresses = dict()
+    dresses[idx] = {
+                        "name" : name,
+                        "url"  : url["href"],
+                        "price": price
+    }
 
-# for product in products:
-#     url = product.find("a", href=True)
-#     name = product.find("strong").string.strip()
-
-#     dresses[name] = url["href"]
-
-# # print(dresses)
-# # print("len:", len(dresses))
+print(dresses[1])
+# print("len:", len(dresses))
