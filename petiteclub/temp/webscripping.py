@@ -1,10 +1,31 @@
 import requests
 from bs4 import BeautifulSoup
 
+# Testing Selenium - access denied
+# import time
+# from selenium import webdriver
+# If we have to run Selenium in headless mode; that is without seeing the graphics interface running use below code
+# from selenium.webdriver.chrome.options import Options
+
+# chrome_options = Options()
+# chrome_options.add_argument("--headless")
+# driver = webdriver.Chrome(
+#     executable_path=r"D:/gitproject_lib/petite_club/chromedriver.exe", options=chrome_options
+# )
+
+# items_url = "https://www.anntaylor.com/petite-dresses/cata000028"
+
+# driver.get(items_url)
+# driver.delete_all_cookies()
+
+# doc = BeautifulSoup(driver.page_source, "lxml")
+# print(doc.prettify())
+#  -----------------------------------------------------------
+
 url = "https://www.anntaylor.com/petite-dresses/cata000028"
 
 result = requests.get(url)
-doc = BeautifulSoup(result.text, "html.parser")
+doc = BeautifulSoup(result.text, "lxml")
 
 # scrap title of title
 cat_title = doc.find("h1", class_="page-title")
@@ -47,10 +68,12 @@ for idx, product in enumerate(products):
     name = product.select("strong")[0].string.strip()
     price = product.select("span.price > span")[0].string
 
-    dresses[idx] = {
-                        "name" : name,
-                        "url"  : url,
-                        "price": price
-    }
+    dresses[idx] = {"name": name, "url": url, "price": price}
 
 print(dresses[1])
+print("len:", len(dresses))
+
+
+#  -----------------------------------------------------------
+# driver.quit()
+#  -----------------------------------------------------------
