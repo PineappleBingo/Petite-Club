@@ -62,16 +62,30 @@ products = doc.find_all("li", class_="product")
 #     # print(product_price[0].string)
 #     print(product_price)
 
+# Find image src in product list
+imgs = products[0].find_all("img")
+for img in imgs:
+    print(img["src"])
+# or
+img = products[0].find_all("img")[0]
+print(img["src"])
+
+# select("div.swiper-wrapper + div.swiper-slide img[src]") #[1].get("src")
+
 dresses = dict()
 for idx, product in enumerate(products):
     url = product.select("div > a")[0].get("href")
     name = product.select("strong")[0].string.strip()
     price = product.select("span.price > span")[0].string
+    img = product.find_all("img")[0].get("src")
 
-    dresses[idx] = {"name": name, "url": url, "price": price}
+    dresses[idx] = {"name": name, "url": url, "price": price, "img": img}
 
+print(dresses[0])
 print(dresses[1])
+print(dresses[2])
 print("len:", len(dresses))
+
 
 
 #  -----------------------------------------------------------
