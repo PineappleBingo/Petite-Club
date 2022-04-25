@@ -1,26 +1,25 @@
 import requests
 from bs4 import BeautifulSoup
 
-keyword = input("Enter Keyword: ")
-keyword = keyword.strip().title()
+# keyword = input("Enter Keyword: ")
+# keyword = keyword.strip().title()
 
-url = (
-    "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+"
-    + keyword
-    + "&N=102435"
-)
-
-names = []
-prices = []
-urls = []
-images = []
+# url = (
+#     "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+"
+#     + keyword
+#     + "&N=102435"
+# )
 
 
-def get_dress_ann(url):
+def get_dress_data(url, keyword):
     result = requests.get(url)
     doc = BeautifulSoup(result.text, "lxml")
-
     products = doc.find_all("li", class_="product")
+    
+    names = []
+    prices = []
+    urls = []
+    images = []
 
     for idx, product in enumerate(products):
         name = product.select("strong")[0].string.strip()
@@ -41,3 +40,5 @@ def get_dress_ann(url):
         # print(img)
 
     return names, prices, urls, images
+
+# get_dress_data(url)
