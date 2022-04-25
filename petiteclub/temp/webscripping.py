@@ -98,7 +98,7 @@ doc = BeautifulSoup(result.text, "lxml")
 names = []
 prices = []
 urls = []
-imges = []
+images = []
 
 def get_dress_ann(url):
     result = requests.get(url)
@@ -118,13 +118,13 @@ def get_dress_ann(url):
         names.append(name)
         prices.append(price)
         urls.append(url)
-        imges.append(img)
+        images.append(img)
         
         # print(name)
         # print(price)
         # print(url)
         # print(img)
-    return names, prices, urls, imges
+    return names, prices, urls, images
 
 def get_dress_ann1(url):
 
