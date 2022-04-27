@@ -8,7 +8,6 @@ from .get_data_anntaylor import get_dress_data
 # def home(request):
 #     return render(request, "search/home.html", context)
 
-
 def home(request):
 
     if request.method == "POST":
@@ -50,7 +49,7 @@ def home(request):
         pname, pprice, purl, pimg = get_dress_data(url, keyword)
         data = zip(pname, pprice, purl, pimg)
 
-        if len(pname) > 0:
+        if len(pname) > 0: 
             context = {"data": data}
         else:
             context = {"message": "No Matching Results Found"}
