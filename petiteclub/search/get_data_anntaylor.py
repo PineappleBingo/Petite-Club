@@ -10,12 +10,12 @@ from bs4 import BeautifulSoup
 #     + "&N=102435"
 # )
 
-
-def get_dress_data(url, keyword):
+def get_product_data(url, keyword):
     result = requests.get(url)
     doc = BeautifulSoup(result.text, "lxml")
     products = doc.find_all("li", class_="product")
     
+    ids = []
     names = []
     prices = []
     urls = []
@@ -25,14 +25,16 @@ def get_dress_data(url, keyword):
         name = product.select("strong")[0].string.strip()
 
         if keyword in name:
+            id = idx
             url = product.select("div > a")[0].get("href")
             price = product.select("span.price > span")[0].string
             img = product.find_all("img")[0].get("src")
 
-        names.append(name)
-        prices.append(price)
-        urls.append(url)
-        images.append(img)
+            ids.append(id)
+            names.append(name)
+            prices.append(price)
+            urls.append(url)
+            images.append(img)
 
         # print(name)
         # print(price)
