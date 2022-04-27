@@ -1,7 +1,7 @@
 import requests
 from django.shortcuts import render
 from bs4 import BeautifulSoup
-from .get_data_anntaylor import get_dress_data
+from .get_data_anntaylor import get_product_data
 
 # context = {"var1": "Hello", "var2": "World"}
 
@@ -46,7 +46,7 @@ def home(request):
                 + "&N=102429"
             )
 
-        pname, pprice, purl, pimg = get_dress_data(url, keyword)
+        pname, pprice, purl, pimg = get_product_data(url, keyword)
         data = zip(pname, pprice, purl, pimg)
 
         if len(pname) > 0: 

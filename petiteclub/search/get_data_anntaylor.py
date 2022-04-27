@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 #     + "&N=102435"
 # )
 
-def get_dress_data(url, keyword):
+def get_product_data(url, keyword):
     result = requests.get(url)
     doc = BeautifulSoup(result.text, "lxml")
     products = doc.find_all("li", class_="product")
