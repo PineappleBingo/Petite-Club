@@ -27,7 +27,9 @@ from bs4 import BeautifulSoup
 
 # url_ann ="https://www.anntaylor.com/search/searchResults.jsp?question=Petite+"+keyword+"&N=102435"
 
-url_loft ="https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses&searchTerm="
+url_loft = (
+    "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses&searchTerm="
+)
 
 # ....
 
@@ -105,7 +107,7 @@ url_loft ="https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses
 #     prices = []
 #     urls = []
 #     images = []
-    
+
 #     for idx, product in enumerate(products):
 #         name = product.select("strong")[0].string.strip()
 #         # name = product.select("strong")[0].string.strip()
@@ -121,7 +123,7 @@ url_loft ="https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses
 #         prices.append(price)
 #         urls.append(url)
 #         images.append(img)
-        
+
 #         # print(name)
 #         # print(price)
 #         # print(url)
@@ -133,14 +135,14 @@ url_loft ="https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses
 #     result = requests.get(url_ann)
 #     doc = BeautifulSoup(result.text, "lxml")
 #     products = doc.find_all("li", class_="product")
-    
+
 #     print("products len:", len(products))
 
 #     dresses = dict()
 #     for idx, product in enumerate(products):
 #         # name = product.select("strong")[0].string.strip()
 #         name = product.select("strong")[0].string.strip()
-        
+
 #         if keyword in name:
 #             url = product.select("div > a")[0].get("href")
 #             price = product.select("span.price > span")[0].string
@@ -150,12 +152,12 @@ url_loft ="https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses
 #             print(dresses[idx])
 
 
-    # print(dresses[0])
-    # print(dresses[1])
-    # print(dresses[2])
-    # print(dresses)
-    # print("len:", len(dresses))
-    # return dresses
+# print(dresses[0])
+# print(dresses[1])
+# print(dresses[2])
+# print(dresses)
+# print("len:", len(dresses))
+# return dresses
 
 # data = get_dress_ann(url)
 # print(data)
@@ -168,7 +170,7 @@ url_loft ="https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses
 # driver.quit()
 #  -----------------------------------------------------------
 
-# Loft 
+# Loft
 result = requests.get(url_loft)
 doc = BeautifulSoup(result.text, "lxml")
 
@@ -179,7 +181,7 @@ for product in products:
     url = product.select("div > a")[0].get("href")
     price = product.select("span.price > span")[0].string
     img = product.find_all("img")[0].get("src").strip()
-    
+
     # print(name)
     # print(url)
     # print(price)
@@ -190,7 +192,7 @@ def get_product_data_loft(url_loft, keyword):
     result = requests.get(url_loft)
     doc = BeautifulSoup(result.text, "lxml")
     products = doc.find_all("li", class_="product")
-    
+
     ids = []
     names = []
     prices = []
@@ -219,3 +221,30 @@ def get_product_data_loft(url_loft, keyword):
 
     return ids, names, prices, urls, images
 
+
+search_dresses_urls = {
+    "anntaylor": "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+",
+    "loft": "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses&searchTerm=",
+}
+
+for key in search_dresses_urls:
+    print(search_dresses_urls[key])
+
+for key in search_dresses_urls:
+    pid, pname, pprice, purl, pimg = get_product_data_loft(
+        search_dresses_urls[key], "dotted"
+    )
+    data = dict(zip(pid, pname, pprice, purl, pimg))
+
+print(data)
+
+# for d in data:
+#     print(d[pname])
+# print(d.price)
+# print(d.url)
+# print(d.img)
+
+
+# >>> a_dict = dict(zip(fields, values))
+# >>> a_dict
+# {'name': 'John', 'last_name': 'Doe', 'age': '45', 'job': 'Python Developer'}
