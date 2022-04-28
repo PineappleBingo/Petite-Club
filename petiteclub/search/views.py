@@ -1,12 +1,18 @@
 import requests
 from django.shortcuts import render
 from bs4 import BeautifulSoup
-from .get_data_anntaylor import get_product_data
+from .web_scraping import get_product_data
 
 # context = {"var1": "Hello", "var2": "World"}
-
 # def home(request):
 #     return render(request, "search/home.html", context)
+
+search_dresses_urls = []
+search_pants_urls = []
+search_skirts_urls = []
+search_suits_urls = []
+search_jackets_urls = []
+
 
 def home(request):
 
@@ -46,15 +52,15 @@ def home(request):
                 + "&N=102429"
             )
 
-        pname, pprice, purl, pimg = get_product_data(url, keyword)
-        data = zip(pname, pprice, purl, pimg)
+        pid, pname, pprice, purl, pimg = get_product_data(url, keyword)
+        data = zip(pid, pname, pprice, purl, pimg)
 
         if len(pname) > 0: 
             context = {"data": data}
         else:
             context = {"message": "No Matching Results Found"}
 
-        # context = {"pname": pname, "pprice": pprice, "purl": purl, "pimg": pimg}
+        # context = {"pid": pid, pname": pname, "pprice": pprice, "purl": purl, "pimg": pimg}
         return render(request, "search/home.html", context)
 
     return render(request, "search/home.html")
