@@ -10,11 +10,12 @@ from bs4 import BeautifulSoup
 #     + "&N=102435"
 # )
 
+
 def get_product_data(url, keyword):
     result = requests.get(url)
     doc = BeautifulSoup(result.text, "lxml")
     products = doc.find_all("li", class_="product")
-    
+
     ids = []
     names = []
     prices = []
@@ -41,6 +42,7 @@ def get_product_data(url, keyword):
         # print(url)
         # print(img)
 
-    return names, prices, urls, images
+    return ids, names, prices, urls, images
+
 
 # get_dress_data(url)

@@ -7,7 +7,10 @@ from .web_scraping import get_product_data
 # def home(request):
 #     return render(request, "search/home.html", context)
 
-search_dresses_urls = []
+search_dresses_urls = {
+    "anntaylor": "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+",
+    "loft": "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses&searchTerm=",
+}
 search_pants_urls = []
 search_skirts_urls = []
 search_suits_urls = []
@@ -23,9 +26,10 @@ def home(request):
 
         if category_list == "Dress":
             url = (
-                "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+"
-                + keyword
-                + "&N=102429"
+                    "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+" + keyword
+                # "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+"
+                # + keyword
+                # + "&N=102429"
             )
         elif category_list == "Pants":
             url = (
@@ -55,7 +59,7 @@ def home(request):
         pid, pname, pprice, purl, pimg = get_product_data(url, keyword)
         data = zip(pid, pname, pprice, purl, pimg)
 
-        if len(pname) > 0: 
+        if len(pname) > 0:
             context = {"data": data}
         else:
             context = {"message": "No Matching Results Found"}
