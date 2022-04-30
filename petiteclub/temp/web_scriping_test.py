@@ -26,8 +26,7 @@ from bs4 import BeautifulSoup
 # keyword = keyword.strip().title()
 
 # url_ann ="https://www.anntaylor.com/search/searchResults.jsp?question=Petite+"+keyword+"&N=102435"
-
-url_loft = "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses+"
+# url_loft = "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses+"
 
 # ....
 
@@ -220,7 +219,6 @@ for key in search_dresses_urls:
     search_dresses_urls[key] = search_dresses_urls[key] + keyword
     print("Key:", key, search_dresses_urls[key])
 
-
 for site in search_dresses_urls:
 
     if site == "anntaylor":
@@ -239,8 +237,9 @@ for site in search_dresses_urls:
 
         data = zip(pid, pname, pprice, purl, pimg)
 
+# new_data = data1 + data2
 
-# print result
+# # print result
 # for d in data:
 #     print(d)
 

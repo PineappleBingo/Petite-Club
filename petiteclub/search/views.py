@@ -1,7 +1,8 @@
 import requests
 from django.shortcuts import render
 from bs4 import BeautifulSoup
-from .web_scraping import get_product_data
+from .web_scraping import get_product_data_ann
+from .web_scraping import get_product_data_loft
 
 # context = {"var1": "Hello", "var2": "World"}
 # def home(request):
@@ -9,12 +10,24 @@ from .web_scraping import get_product_data
 
 search_dresses_urls = {
     "anntaylor": "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+",
-    "loft": "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses+"
+    "loft": "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses+",
 }
-search_pants_urls = []
-search_skirts_urls = []
-search_suits_urls = []
-search_jackets_urls = []
+search_pants_urls = {
+    "anntaylor": "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+",
+    "loft": "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses+",
+}
+search_skirts_urls = {
+    "anntaylor": "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+",
+    "loft": "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses+",
+}
+search_suits_urls = {
+    "anntaylor": "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+",
+    "loft": "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses+",
+}
+search_jackets_urls = {
+    "anntaylor": "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+",
+    "loft": "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses+",
+}
 
 
 def home(request):
@@ -24,12 +37,25 @@ def home(request):
         keyword = keyword.strip().title()
         category_list = request.POST["category_list"]
 
-        if category_list == "Dress":
-            
+        if category_list == "Dresses":
+
             for key in search_dresses_urls:
-                pid, pname, pprice, purl, pimg = get_product_data(search_dresses_urls[key], keyword)
-                data = zip(pid, pname, pprice, purl, pimg)
-            
+                # appending keyword to search url
+                search_dresses_urls[key] = search_dresses_urls[key] + keyword
+
+            for site in search_dresses_urls:
+                if site == "anntaylor":
+                    pid, pname, pprice, purl, pimg = get_product_data_ann(
+                        search_dresses_urls[site], keyword
+                    )
+                    data = zip(pid, pname, pprice, purl, pimg)
+
+                elif site == "loft":
+                    pid, pname, pprice, purl, pimg = get_product_data_loft(
+                        search_dresses_urls[site], keyword
+                    )
+                    data = zip(pid, pname, pprice, purl, pimg)
+
         #     url = (
         #             "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+" + keyword
         #     )
