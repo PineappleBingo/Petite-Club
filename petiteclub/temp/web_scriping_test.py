@@ -144,6 +144,7 @@ def get_product_data_ann(search_url, keyword):
     prices = []
     urls = []
     images = []
+    # data_gallery = dict()
 
     for idx, product in enumerate(products):
         name = product.select("strong")[0].string.strip().lower()
@@ -153,7 +154,8 @@ def get_product_data_ann(search_url, keyword):
             url = product.select("div > a")[0].get("href")
             price = product.select("span.price > span")[0].string
             img = product.find_all("img")[0].get("src").replace("\n", "")
-
+            
+            # data_gallery[idx] = {"name": name, "url": url, "price": price, "img": img}
             ids.append(id)
             names.append(name)
             prices.append(price)
@@ -229,13 +231,13 @@ for site in search_dresses_urls:
 
         data = zip(pid, pname, pprice, purl, pimg)
 
-    elif site == "loft":
-        pid, pname, pprice, purl, pimg = get_product_data_loft(
-            search_dresses_urls[site], keyword
-        )
-        print(pid, pname, pprice, purl, pimg)
+    # elif site == "loft":
+    #     pid, pname, pprice, purl, pimg = get_product_data_loft(
+    #         search_dresses_urls[site], keyword
+    #     )
+    #     print(pid, pname, pprice, purl, pimg)
 
-        data = zip(pid, pname, pprice, purl, pimg)
+    #     data = zip(pid, pname, pprice, purl, pimg)
 
 # new_data = data1 + data2
 
