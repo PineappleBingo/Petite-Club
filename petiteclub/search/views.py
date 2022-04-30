@@ -9,7 +9,7 @@ from .web_scraping import get_product_data
 
 search_dresses_urls = {
     "anntaylor": "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+",
-    "loft": "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses&searchTerm="
+    "loft": "https://www.loft.com/search/searchResults.jsp?question=Petite+Dresses+"
 }
 search_pants_urls = []
 search_skirts_urls = []
