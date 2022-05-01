@@ -1,9 +1,9 @@
+from types import NoneType
 import requests
 from django.shortcuts import render
 from bs4 import BeautifulSoup
 from .web_scraping import get_product_data_ann
 from .web_scraping import get_product_data_loft
-from .web_scraping import get_data_test
 
 # context = {"var1": "Hello", "var2": "World"}
 # def home(request):
@@ -40,6 +40,12 @@ def home(request):
 
         if category_list == "Dresses":
 
+            p_id = []
+            p_name = []
+            p_price = []
+            p_url = []
+            p_img = []
+
             for key in search_dresses_urls:
                 # appending keyword to search url
                 search_dresses_urls[key] = search_dresses_urls[key] + keyword
@@ -49,54 +55,64 @@ def home(request):
                     pid, pname, pprice, purl, pimg = get_product_data_ann(
                         search_dresses_urls[site], keyword
                     )
-                    data = zip(pid, pname, pprice, purl, pimg)
-                    # testing
-                    product_data = get_data_test(search_dresses_urls[site], keyword)
+                    #  [[],[],[], ...]
+                    p_id.append(pid)
+                    p_name.append(pname)
+                    p_price.append(pprice)
+                    p_url.append(purl)
+                    p_img.append(pimg)
 
-                # elif site == "loft":
-                #     pid, pname, pprice, purl, pimg = get_product_data_loft(
-                #         search_dresses_urls[site], keyword
-                #     )
-                #     data = zip(pid, pname, pprice, purl, pimg)
+                elif site == "loft":
+                    pid, pname, pprice, purl, pimg = get_product_data_loft(
+                        search_dresses_urls[site], keyword
+                    )
+                    #  [[],[],[], ...]
+                    p_id.append(pid)
+                    p_name.append(pname)
+                    p_price.append(pprice)
+                    p_url.append(purl)
+                    p_img.append(pimg)
 
-        #     url = (
-        #             "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+" + keyword
-        #     )
-        # elif category_list == "Pants":
-        #     url = (
-        #         "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Pants+"
-        #         + keyword
-        #     )
-        # elif category_list == "Skirts":
-        #     url = (
-        #         "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Skirts+"
-        #         + keyword
-        #     )
-        # elif category_list == "Suits":
-        #     url = (
-        #         "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Suits+"
-        #         + keyword
-        #     )
-        # elif category_list == "Jackets":
-        #     url = (
-        #         "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Jackets+and+Blazers+"
-        #         + keyword
-        #     )
+            # Flattening Lists
+            fp_id = [item for sublist in p_id for item in sublist]
+            fp_name = [item for sublist in p_name for item in sublist]
+            fp_price = [item for sublist in p_price for item in sublist]
+            fp_url = [item for sublist in p_url for item in sublist]
+            fp_img = [item for sublist in p_img for item in sublist]
 
-        # pid, pname, pprice, purl, pimg = get_product_data(url, keyword)
-        # data = zip(pid, pname, pprice, purl, pimg)
+            data = zip(fp_id, fp_name, fp_price, fp_url, fp_img)
 
-        # if len(pname) > 0:
-        #     context = {"data": data}
-        # else:
-        #     context = {"message": "No Matching Results Found"}
+        # add code here for other categories
 
-        # if len(pname) > 0:
-        context = {"data": product_data}
-        # else:
-        # context = {"message": "No Matching Results Found"}
+        if len(fp_name) > 0:
+            context = {"data": data}
+        else:
+            context = {"message": "No Matching Results Found"}
 
-        # context = {"pid": pid, pname": pname, "pprice": pprice, "purl": purl, "pimg": pimg}
         return render(request, "search/home.html", context)
 
     return render(request, "search/home.html")
+
+    #     url = (
+    #             "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+" + keyword
+    #     )
+    # elif category_list == "Pants":
+    #     url = (
+    #         "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Pants+"
+    #         + keyword
+    #     )
+    # elif category_list == "Skirts":
+    #     url = (
+    #         "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Skirts+"
+    #         + keyword
+    #     )
+    # elif category_list == "Suits":
+    #     url = (
+    #         "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Suits+"
+    #         + keyword
+    #     )
+    # elif category_list == "Jackets":
+    #     url = (
+    #         "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Jackets+and+Blazers+"
+    #         + keyword
+    #     )

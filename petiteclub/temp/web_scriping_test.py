@@ -237,7 +237,7 @@ for site in search_dresses_urls:
         print(pid, pname, pprice, purl, pimg)
 
         data = zip(pid, pname, pprice, purl, pimg)
-        // testing
+        # testing
         get_data_test(search_dresses_urls[site], keyword)
 
     # elif site == "loft":
@@ -257,3 +257,10 @@ for site in search_dresses_urls:
 # >>> a_dict = dict(zip(fields, values))
 # >>> a_dict
 # {'name': 'John', 'last_name': 'Doe', 'age': '45', 'job': 'Python Developer'}
+
+
+# Flattening List of Lists
+# pd1 = [[1, 2, 3], [4, 5, 6]]
+# pd2 = [['a', 'b', 'c'],['d', 'e', 'f']]
+# flat_list = []
+# flat_list = [item for sublist in pd1 for item in sublist]

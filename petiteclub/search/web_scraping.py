@@ -111,34 +111,3 @@ def get_product_data_loft(search_url, keyword):
         # print(img)
 
     return ids, names, prices, urls, images
-
-
-def get_data_test(search_url, keyword):
-
-    result = requests.get(search_url)
-    doc = BeautifulSoup(result.text, "lxml")
-    products = doc.find_all("li", class_="product")
-
-    print("products len:", len(products))
-
-    product_data = dict()
-    for idx, product in enumerate(products):
-        name = product.select("strong")[0].string.strip().title()
-
-        if keyword in name:
-            id = idx
-            url = product.select("div > a")[0].get("href")
-            price = product.select("span.price > span")[0].string
-            img = product.find_all("img")[0].get("src").replace("\n", "")
-
-            product_data[idx] = {
-                "id": id,
-                "name": name,
-                "url": url,
-                "price": price,
-                "img": img,
-            }
-
-            # print(product_data[idx])
-    return product_data
-    
