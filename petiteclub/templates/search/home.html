@@ -56,7 +56,7 @@
                                 <div class="row no-gutters">
                                     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                         <select name="category_list" class="form-control" id="exampleFormControlSelect1">
-                                            <option value="Dress">Dress</option>
+                                            <option value="Dresses">Dresses</option>
                                             <option value="Pants">Pants</option>
                                             <option value="Skirts">Skirts</option>
                                             <option value="Suits">Suits</option>
@@ -101,14 +101,14 @@
 
 <div class="album py-5 bg-light">
     <div class="container">
-        
+
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for pname, pprice, purl, pimg in data %}
-            
+            {% for id, pname, pprice, purl, pimg in data %}
+
             <div class="col">
                 <div class="card shadow-sm">
                     <a href="{{ purl }}" target="_blank">
-                        <img src="{{ pimg }}" alt="{{ pname }}" width="100%" height="100%" >
+                        <img src="{{ pimg }}" alt="{{ pname }}" width="100%" height="100%">
                     </a>
                     <div class="card-body">
                         <p class="card-text">{{pname}}</p>
@@ -118,8 +118,8 @@
                                 <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
                                 <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                                 <button type="button" class="btn btn-outline-secondary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope"
-                                        viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-envelope" viewBox="0 0 16 16">
                                         <path
                                             d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z">
                                         </path>
@@ -127,16 +127,16 @@
                                     <span class="visually-hidden">Button</span>
                                 </button>
                                 <button type="button" class="btn btn-outline-danger">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart"
-                                        viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-suit-heart" viewBox="0 0 16 16">
                                         <path
                                             d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z">
                                         </path>
                                     </svg>
                                 </button>
                                 <button type="button" class="btn btn-outline-danger">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shop"
-                                        viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-shop" viewBox="0 0 16 16">
                                         <path
                                             d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z">
                                         </path>
@@ -144,7 +144,7 @@
                                     Shop
                                 </button>
                             </div>
-                            <!-- <small class="text-muted"></small> -->
+                            <small class="text-muted">Product#:{{ id }}</small>
                         </div>
                     </div>
                     </a>
@@ -155,7 +155,6 @@
         </div>
     </div>
 </div>
-
 
 
 {% endblock content %}
