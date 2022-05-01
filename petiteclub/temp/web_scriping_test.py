@@ -93,26 +93,33 @@ from bs4 import BeautifulSoup
 # # print(dresses)
 # print("len:", len(dresses))
 
-# def get_dress_ann1(url_ann):
 
-#     result = requests.get(url_ann)
-#     doc = BeautifulSoup(result.text, "lxml")
-#     products = doc.find_all("li", class_="product")
+def get_data_test(search_url, keyword):
 
-#     print("products len:", len(products))
+    result = requests.get(search_url)
+    doc = BeautifulSoup(result.text, "lxml")
+    products = doc.find_all("li", class_="product")
 
-#     dresses = dict()
-#     for idx, product in enumerate(products):
-#         # name = product.select("strong")[0].string.strip()
-#         name = product.select("strong")[0].string.strip().lower()
+    print("products len:", len(products))
 
-#         if keyword in name:
-#             url = product.select("div > a")[0].get("href")
-#             price = product.select("span.price > span")[0].string
-#             img = product.find_all("img")[0].get("src")
+    product_data = dict()
+    for idx, product in enumerate(products):
+        name = product.select("strong")[0].string.strip().title()
 
-#             dresses[idx] = {"name": name, "url": url, "price": price, "img": img}
-#             print(dresses[idx])
+        if keyword in name:
+            id = idx
+            url = product.select("div > a")[0].get("href")
+            price = product.select("span.price > span")[0].string
+            img = product.find_all("img")[0].get("src").replace("\n", "")
+
+            product_data[idx] = {
+                "id": id,
+                "name": name,
+                "url": url,
+                "price": price,
+                "img": img,
+            }
+            print(product_data[idx])
 
 
 # print(dresses[0])
@@ -147,14 +154,14 @@ def get_product_data_ann(search_url, keyword):
     # data_gallery = dict()
 
     for idx, product in enumerate(products):
-        name = product.select("strong")[0].string.strip().lower()
+        name = product.select("strong")[0].string.strip().title()
 
         if keyword in name:
             id = idx
             url = product.select("div > a")[0].get("href")
             price = product.select("span.price > span")[0].string
             img = product.find_all("img")[0].get("src").replace("\n", "")
-            
+
             # data_gallery[idx] = {"name": name, "url": url, "price": price, "img": img}
             ids.append(id)
             names.append(name)
@@ -181,7 +188,7 @@ def get_product_data_loft(search_url, keyword):
     images = []
 
     for idx, product in enumerate(products):
-        name = product.select("strong")[0].string.strip().lower()
+        name = product.select("strong")[0].string.strip().title()
         # print(name)
 
         if keyword in name:
@@ -214,7 +221,7 @@ search_dresses_urls = {
 }
 
 keyword = "Dotted"
-keyword = str(keyword).lower().strip()
+keyword = str(keyword).strip().title()
 
 for key in search_dresses_urls:
     # appending keyword to search url
@@ -230,6 +237,8 @@ for site in search_dresses_urls:
         print(pid, pname, pprice, purl, pimg)
 
         data = zip(pid, pname, pprice, purl, pimg)
+        // testing
+        get_data_test(search_dresses_urls[site], keyword)
 
     # elif site == "loft":
     #     pid, pname, pprice, purl, pimg = get_product_data_loft(

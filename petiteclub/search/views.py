@@ -3,6 +3,7 @@ from django.shortcuts import render
 from bs4 import BeautifulSoup
 from .web_scraping import get_product_data_ann
 from .web_scraping import get_product_data_loft
+from .web_scraping import get_data_test
 
 # context = {"var1": "Hello", "var2": "World"}
 # def home(request):
@@ -49,12 +50,14 @@ def home(request):
                         search_dresses_urls[site], keyword
                     )
                     data = zip(pid, pname, pprice, purl, pimg)
+                    # testing
+                    product_data = get_data_test(search_dresses_urls[site], keyword)
 
-                elif site == "loft":
-                    pid, pname, pprice, purl, pimg = get_product_data_loft(
-                        search_dresses_urls[site], keyword
-                    )
-                    data = zip(pid, pname, pprice, purl, pimg)
+                # elif site == "loft":
+                #     pid, pname, pprice, purl, pimg = get_product_data_loft(
+                #         search_dresses_urls[site], keyword
+                #     )
+                #     data = zip(pid, pname, pprice, purl, pimg)
 
         #     url = (
         #             "https://www.anntaylor.com/search/searchResults.jsp?question=Petite+Dresses+" + keyword
@@ -83,10 +86,15 @@ def home(request):
         # pid, pname, pprice, purl, pimg = get_product_data(url, keyword)
         # data = zip(pid, pname, pprice, purl, pimg)
 
-        if len(pname) > 0:
-            context = {"data": data}
-        else:
-            context = {"message": "No Matching Results Found"}
+        # if len(pname) > 0:
+        #     context = {"data": data}
+        # else:
+        #     context = {"message": "No Matching Results Found"}
+
+        # if len(pname) > 0:
+        context = {"data": product_data}
+        # else:
+        # context = {"message": "No Matching Results Found"}
 
         # context = {"pid": pid, pname": pname, "pprice": pprice, "purl": purl, "pimg": pimg}
         return render(request, "search/home.html", context)
