@@ -36,15 +36,7 @@ def get_product_data(search_url, keyword):
             urls.append(url)
             images.append(img)
 
-        # print(name)
-        # print(price)
-        # print(url)
-        # print(img)
-
     return ids, names, prices, urls, images
-
-
-# get_dress_data(url)
 
 def get_product_data_ann(search_url, keyword):
     result = requests.get(search_url)
@@ -72,10 +64,6 @@ def get_product_data_ann(search_url, keyword):
             urls.append(url)
             images.append(img)
 
-        # print(name)
-        # print(price)
-        # print(url)
-        # print(img)
     return ids, names, prices, urls, images
 
 
@@ -104,10 +92,5 @@ def get_product_data_loft(search_url, keyword):
             prices.append(price)
             urls.append(url)
             images.append(img)
-
-        # print(name)
-        # print(price)
-        # print(url)
-        # print(img)
 
     return ids, names, prices, urls, images
