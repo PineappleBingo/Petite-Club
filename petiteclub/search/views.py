@@ -273,7 +273,7 @@ def home(request):
         if len(fp_name) > 0:
             context = {"data": data}
         else:
-            context = {"message": "No Matching Results Found"}
+            context = {"search_result": "No Matching Results Found"}
 
         return render(request, "search/home.html", context)
 
