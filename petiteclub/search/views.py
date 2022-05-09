@@ -1,4 +1,4 @@
-from types import NoneType
+# from types import NoneType
 import requests
 from django.shortcuts import render
 from bs4 import BeautifulSoup
