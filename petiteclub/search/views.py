@@ -31,7 +31,7 @@ search_jackets_urls = {
 }
 
 
-def home(request):
+def search(request):
 
     if request.method == "POST":
         keyword = request.POST["keyword"]
