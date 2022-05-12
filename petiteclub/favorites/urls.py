@@ -1,8 +1,8 @@
 from django.urls import path
-from . import views
+# from . import views
 
 urlpatterns = [
-    path("", views.favorites, name="favorites"),
+    # path("", views.favorites, name="favorites"),
     
     # example
     # path("list/", views.favorites, name="list"),
