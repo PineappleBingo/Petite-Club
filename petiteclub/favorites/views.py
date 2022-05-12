@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from search.models import Product
 # load from search model(db)
 
 products = [
@@ -25,7 +25,6 @@ products = [
 
 
 context = {"products": products}
-
 
 def favorites(request):
     return render(request, "favorites/favlist.html", context)
