@@ -2,10 +2,10 @@
 
 {% block content %}
 
-    <h1>My Favorite List</h1>
+    <h1>{{ user.username }}'s Favorite List</h1>
 
     {% for product in products %}
-    
+
         <ul>
             <li>Product Name: {{ product.product_name }}</li>
             <li>Product Price: {{ product.product_price }}</li>

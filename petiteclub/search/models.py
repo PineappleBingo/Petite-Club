@@ -1,18 +1,5 @@
 from django.db import models
 from members.models import FavList
-# from django.contrib.auth.models import User
-
-# laster we moved to favorites Models
-
-# custom user class
-# class User(models.Model):
-#     fisrt_name = models.CharField(max_length=60)
-#     last_name = models.CharField(max_length=60)
-#     email_address = models.EmailField
-    
-#     def __str__(self):
-#         return self.fisrt_name + " " + self.last_name
-
 
 class Product(models.Model):
     product_name = models.CharField(max_length=100)

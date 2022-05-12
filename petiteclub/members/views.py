@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from . forms import RegisterUserForm
+from .forms import RegisterUserForm
 from django.contrib import messages
 from search.models import Product
 
@@ -15,7 +15,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("home")
+            return redirect("search-home")
         else:
             # Return an 'invalid login' error message.
             messages.success(request, ("There was an error logging. Try again"))
@@ -28,7 +28,7 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.success(request, ("You were logged out"))
-    return redirect("home")
+    return redirect("search-home")
 
 
 def register_user(request):
@@ -38,17 +38,14 @@ def register_user(request):
             form.save()
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password1"]
-            user = authenticate(username = username, password = password)
+            user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, "Registration Successful")
-            return redirect("home")
+            return redirect("search-home")
     else:
         form = RegisterUserForm()
 
-    return render(request, "authenticate/register_user.html", {
-        "form" : form
-    })
-
+    return render(request, "authenticate/register_user.html", {"form": form})
 
 
 products = [
