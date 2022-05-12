@@ -23,8 +23,10 @@ products = [
     },
 ]
 
+# testing with dummy data
+# context = {"products": products}
+context = {"products": Product.objects.all()}
 
-context = {"products": products}
 
 def favorites(request):
     return render(request, "favorites/favlist.html", context)

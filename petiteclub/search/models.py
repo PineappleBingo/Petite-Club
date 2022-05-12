@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# laster we moved to favorites Models
+
 # custom user class
 # class User(models.Model):
 #     fisrt_name = models.CharField(max_length=60)
@@ -11,15 +13,15 @@ from django.contrib.auth.models import User
 #         return self.fisrt_name + " " + self.last_name
 
 class Product(models.Model):
-    name = models.CharField(max_length=100)
-    price = models.CharField(max_length=10)
-    ulr = models.CharField(max_length=300)
-    img = models.CharField(max_length=300)
+    product_name = models.CharField(max_length=100)
+    product_price = models.CharField(max_length=10)
+    product_url = models.CharField(max_length=300)
+    product_img = models.CharField(max_length=300)
 
     saved_by = models.ForeignKey(User, on_delete=models.CASCADE)
     # saved_by = models.ManyToManyField(User, blank=True)
 
-    # # List product name on Admin page
-    # def __str__(self):
-    #     return self.name
+    # List product name on Admin page
+    def __str__(self):
+        return self.product_name
 
