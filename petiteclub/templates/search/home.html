@@ -42,78 +42,65 @@
     </section>
 </form> -->
 
-<form action="" method="post">{% csrf_token %}
-    
-    <div class="container">
-    <div class="row">
-        <div class="col-lg-12 card-margin">
-            <div class="card search-form">
-                <div class="card-body p-0">
-                    <form id="search-form">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                        <select name="category_list" class="form-control" id="exampleFormControlSelect1">
-                                            <option value="Dresses">Dresses</option>
-                                            <option value="Pants">Pants</option>
-                                            <option value="Skirts">Skirts</option>
-                                            <option value="Suits">Suits</option>
-                                            <option value="Jakets">Jakets and Blazers</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-8 col-md-6 col-sm-12 p-0">
-                                        <input type="text" placeholder="Search..." class="form-control" id="search"
-                                            name="keyword">
-                                    </div>
-                                    <div class="col-lg-1 col-md-3 col-sm-12 p-0">
-                                        <button type="submit" class="btn btn-base">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="feather feather-search">
-                                                <circle cx="11" cy="11" r="8"></circle>
-                                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-
-
-
 
 <div class="container mt-3">
-
-
-    
     <h2>{{ search_result }}</h2>
     <!-- <h1>This is home</h1>
     <h2>Product Name: {{ pname }}</h2>
     <h3>Product Price: {{ pprice }}</h3>
     <h3>Product Url: {{ purl }}</h3>
     <h3>Product Imgage: {{ pimg }}</h3> -->
-    
 </div>
-
-
-
+<!-- <link rel="stylesheet" href="../static/css/nav_bar.css"> -->
+<form class="form-input" action="" method="post">{% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 card-margin">
+                <div class="card search-form">
+                    <div class="card-body p-0">
+                        <form id="search-form">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                            <select name="category_list" class="form-control"
+                                                id="exampleFormControlSelect1">
+                                                <option value="Dresses">Dresses</option>
+                                                <option value="Pants">Pants</option>
+                                                <option value="Skirts">Skirts</option>
+                                                <option value="Suits">Suits</option>
+                                                <option value="Jakets">Jakets and Blazers</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-8 col-md-6 col-sm-12 p-0">
+                                            <input type="text" placeholder="Search..." class="btns" id="search"
+                                                name="keyword">
+                                        </div>
+                                        <div class="col-lg-1 col-md-3 col-sm-12 p-0">
+                                            <button type="submit" class="btn btn-base">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-search">
+                                                    <circle cx="11" cy="11" r="8"></circle>
+                                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
 
 <div class="album py-5 bg-light">
-
     <div class="container">
-
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for id, pname, pprice, purl, pimg in data %}
-
             <div class="col">
                 <div class="card shadow-sm">
                     <a href="{{ purl }}" target="_blank">
@@ -124,7 +111,7 @@
                         <p class="card-text">{{pprice}}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                              
+
                                 <!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
                                 <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
                                 <button type="button" class="btn btn-outline-secondary">
