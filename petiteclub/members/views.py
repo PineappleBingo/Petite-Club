@@ -74,5 +74,11 @@ products = [
 context = {"products": Product.objects.all()}
 
 
+# def favorites(request):
+#     return render(request, "favorites/favlist.html", context)
+
+
 def favorites(request):
+
+    # if request.method == "POST":
     return render(request, "favorites/favlist.html", context)
