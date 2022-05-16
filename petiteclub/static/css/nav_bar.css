@@ -12,17 +12,17 @@ body {
 }
 
 
-.title{
+.nav-bar-header .title{
     margin-left: 30px;
 }
 
-.PetiteLogo {
+.nav-bar-header .PetiteLogo {
     margin-left: 20px;
     width: 70px;
     height: 70px;
 }
 
-.nav-btns-right{
+.nav-bar-header .nav-btns-right{
     width: 25%;
     height: 30px;
 
@@ -35,7 +35,7 @@ body {
     align-items: center;
 }
 
-.btns{
+.nav-bar-header .btns{
     /* height: 20px; */
     background: #fedce0;
     border-radius: 12px;
@@ -44,11 +44,11 @@ body {
     
 }
 
-.btns:hover{
+.nav-bar-header .btns:hover{
     background-color: #d7efff;
 }
 
-.nav-btns-left {
+.nav-bar-header .nav-btns-left {
     width: 25%;
     height: 30px;
 
@@ -63,7 +63,7 @@ body {
     align-items: center;
 }
 
-.product-btn{
+.nav-bar-header .product-btn{
    height:40px;
    width: 50%;
     background: rgb(170, 121, 121);
