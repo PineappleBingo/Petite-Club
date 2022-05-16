@@ -1,4 +1,5 @@
-# from types import NoneType
+#from types import NoneType
+import imp
 import requests
 from django.shortcuts import render
 from bs4 import BeautifulSoup
@@ -272,7 +273,7 @@ def home(request):
         if len(fp_name) > 0:
             context = {"data": data}
         else:
-            context = {"message": "No Matching Results Found"}
+            context = {"search_result": "No Matching Results Found"}
 
         return render(request, "search/home.html", context)
 
