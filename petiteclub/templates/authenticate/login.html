@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/authenticate.css' %}" />
+    <link href="http://fonts.cdnfonts.com/css/itc-cheltenham-std" rel="stylesheet">
+</head>
+<body>
+<div class="login-page-body">
 
-<div class="container">
+<h1 id="login-page-title">Customer Login</h1>
 
-<h1>Login</h1>
-
+    <div id="login-MainContent" class="login-form-body">
     <form action="" method="POST">
         {% csrf_token %}
 
@@ -17,11 +23,16 @@
                 <input type="password" class="form-control" name="password">
             </div>
             
+        <input type="submit" value="Submit" class="btn btn-dark btn-block w-100">
 
-        <input type="submit" value="Submit" class="btn btn-secccondary">
-
-    
     </form>
+    <div class="secondary-wrap">
+    <p>New customer?
+    <a href="{% url 'register_user' %}">Sign up for an account.</a>
+    </p>
+    </div>
+    </div>
 
 </div>
+</body>
 {% endblock content %}
