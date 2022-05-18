@@ -264,6 +264,3 @@ pd1 = [[1, 2, 3], [4, 5, 6]]
 pd2 = [['a', 'b', 'c'],['d', 'e', 'f']]
 flat_list = []
 flat_list = [item for sublist in pd1 for item in sublist]
-
-
-
