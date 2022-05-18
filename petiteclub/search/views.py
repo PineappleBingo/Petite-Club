@@ -1,7 +1,7 @@
-#from types import NoneType
+# from types import NoneType
 import imp
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from bs4 import BeautifulSoup
 from .web_scraping import get_product_data_ann
 from .web_scraping import get_product_data_loft
@@ -32,7 +32,7 @@ search_jackets_urls = {
 }
 
 
-def home(request):
+def search(request):
 
     if request.method == "POST":
         keyword = request.POST["keyword"]
