@@ -1,4 +1,4 @@
-#from types import NoneType
+# from types import NoneType
 import imp
 import requests
 from django.shortcuts import render, redirect
@@ -276,7 +276,5 @@ def search(request):
             context = {"search_result": "No Matching Results Found"}
 
         return render(request, "search/home.html", context)
-        # return render(request, "home.html", context)
-    
+
     return render(request, "search/home.html")
-    # return render(request, "home.html")
