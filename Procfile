@@ -1,1 +1,1 @@
-web: gunicorn petiteclub.wsgi:petiteclub
+web: gunicorn petiteclub/petiteclub/wsgi:app
