@@ -3,6 +3,5 @@ from search.views import home
 from . import views
 
 urlpatterns = [
-    # path("", views.home, name="home"),
-    path("", home, name="home"),
+     path("", views.home, name="home.html"),    
 ]
