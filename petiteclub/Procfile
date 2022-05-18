@@ -1,1 +1,1 @@
-web: gunicorn petiteclub.wsgi
+web: gunicorn petiteclub.wsgi --log-file -
