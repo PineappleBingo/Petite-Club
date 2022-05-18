@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/authenticate.css' %}" />
+    <link href="http://fonts.cdnfonts.com/css/itc-cheltenham-std" rel="stylesheet">
+</head>
 {% if form.errors %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         There was an error with your form ...
@@ -9,17 +13,26 @@
 
 {% endif %}
 
-<div class="container">
+<div class="register-form-body">
 
-    <h1>Register</h1>
+    <h1 id="register-page-title">Register</h1>
 
-    <form action="{% url 'register_user' %}" method="POST">
+    <form class ="form-body" action="{% url 'register_user' %}" method="POST">
         {% csrf_token %}
+        
+        {% for field in form %}
+        <div class="{{field.name}}">
+            {{field.label}} {{field}} {{field.help_text}}
+        </div>
+        {% endfor %}
 
-        {{ form.as_p }}
+        <input id="btn" type="submit" value="Submit" class="btn btn-dark btn-block w-100">
 
-        <input type="submit" value="Submit" class="btn btn-secccondary">
-
+        <div class="secondary-wrap">
+            <p>Already registered?
+            <a href="{% url 'login' %}">Log in here</a>
+            </p>
+        </div>
 
     </form>
 
