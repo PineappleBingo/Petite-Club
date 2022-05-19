@@ -11,6 +11,17 @@ body {
     background-color: #fedce0 !important;
 }
 
+.nav-bar-header .category-dropdown-wrapper{
+    position: relative;
+}
+
+.nav-bar-header .category-dropdown{
+
+}
+.nav-bar-header .search-bar{
+    border-radius: 8px;
+    height: 100%;
+}
 
 .nav-bar-header .title{
     margin-left: 30px;

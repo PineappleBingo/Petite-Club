@@ -10,7 +10,7 @@
     <div class="nav-btns-right">
 
         {% if user.is_authenticated %}
-        <a href="{% url 'logout' %}"><button type="button" class="btns"><i class="fas fa-user-minus"></i>Logout</button></a>
+        <a href="{% url 'logout' %}"><button type="button" class="btns"><i class="fas fa-user-minus"></i> Logout</button></a>
         {% else %}
         <a href="{% url 'register_user' %}"><button type="button" class="btns"> <i class="fas fa-user-plus"></i> Register</button></a>
         <a href="{% url 'login' %}"><button type="button" class="btns"> <i class="fas fa-user"></i> Sign in</button></a>
@@ -46,8 +46,9 @@
                                 <!-- <div class="row">
                                     <div class="col-12">
                                         <div class="row no-gutters"> -->
-                                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                                <select name="category_list" class="form-control"
+                                            <div class="col-lg-3 col-md-3 col-sm-12 p-0 category-dropdown-wrapper">
+                                                <i class="fas fa-angle-down"></i>
+                                                <select name="category_list" class="form-control category-dropdown btns"
                                                     id="exampleFormControlSelect1">
                                                     <option value="Dresses">Dresses</option>
                                                     <option value="Pants">Pants</option>
@@ -57,7 +58,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-lg-8 col-md-6 col-sm-12 p-0">
-                                                <input type="text" placeholder="Search..." class="btns" id="search"
+                                                <input type="text" placeholder="Search..." class="btns search-bar" id="search"
                                                     name="keyword">
                                             </div>
                                             <div class="col-lg-1 col-md-3 col-sm-12 p-0">
