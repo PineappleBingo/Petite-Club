@@ -12,12 +12,17 @@ body {
 }
 
 .nav-bar-header .category-dropdown-wrapper{
-    position: relative;
+    position: relative !important;
 }
 
 .nav-bar-header .category-dropdown{
 
 }
+
+.nav-bar-header .search-bar{
+    height: 100% !important;
+}
+
 .nav-bar-header .search-bar{
     border-radius: 8px;
     height: 100%;
