@@ -3,8 +3,8 @@
 <div class="nav-bar-header">
     <div class="container d-flex flex-row justify-content-start">
         <a href="{% url 'home' %}" class=""><img class="PetiteLogo" src="{% static 'assets/HeadLogo.png' %}" alt="petite club logo"></a>
-            <div class="title">
-                <font face="Savoye LET" size="10px" color="#FFFFFF">Petite Club</font></a>
+            <div class="title-box">
+                <span class="title">Petite Club</span></a>
             </div>
         <form class="form-input ms-auto col-6 search-bar-wrapper" action="{% url 'search' %}" method="post">{% csrf_token %}
             <div class="container search-bar-container">
@@ -53,13 +53,12 @@
             <a href="{% url 'login' %}"><button type="button" class="btns"> <i class="fas fa-user"></i> Sign in</button></a>
             {% endif %}
         
-            <button type="button" class="btns"> <i class="fas fa-heart"></i> Wish</button>
+            <a href="#"><button type="button" class="btns"> <i class="fas fa-heart"></i> Wish</button></a>
         </div>
         
         <div class="nav-btns-left">
-            <a href="#"><button type="button" class="btns"> <i class="fas fa-exclamation-circle"></i> About</button></a>
-            <a href="{% url 'search' %}"><button type="button" class="btns"> <i class="fas fa-envelope"></i>
-                    Contact</button></a>
+            <a href="{% url 'about' %}"><button type="button" class="btns"> <i class="fas fa-exclamation-circle"></i> About</button></a>
+            <a href="#"><button type="button" class="btns"> <i class="fas fa-envelope"></i>Contact</button></a>
             <a href="{% url 'home' %}"><button type="button" class="btns"> <i class="fas fa-home"></i> Home</button></a>
         </div>
     </div>
