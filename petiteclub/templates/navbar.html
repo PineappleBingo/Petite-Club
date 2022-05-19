@@ -1,84 +1,108 @@
 {% load static %}
 
 <!-- Navbar -->
+
 <div class="nav-bar-header">
-    <a href="{% url 'home' %}"><img class="PetiteLogo" src="{% static 'assets/HeadLogo.png' %}" alt="petite club logo"></a>
-    <div class="title">
-        <!-- <p class="title">Petite Club</p> -->
-        <font face="Savoye LET" size="10px" color="#FFFFFF">Petite Club</font></a>
-    </div>
-    <div class="nav-btns-right">
-
-        {% if user.is_authenticated %}
-        <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
-        <a href="{% url 'register_user' %}"><button type="button" class="btns"> <i class="fas fa-user-plus"></i> Register</button></a>
-        <a href="{% url 'login' %}"><button type="button" class="btns"> <i class="fas fa-user"></i> Sign in</button></a>
-        {% endif %}
-
-        <button type="button" class="btns"> <i class="fas fa-heart"></i> Wish</button>  
-
-    </div>
-    <div class="nav-btns-left">
-        <a href="#"><button type="button" class="btns"> <i class="fas fa-exclamation-circle"></i> About</button></a>
-        <a href="{% url 'search' %}"><button type="button" class="btns"> <i class="fas fa-envelope"></i> Contact</button></a>
-        <a href="{% url 'home' %}"><button type="button" class="btns"> <i class="fas fa-home"></i> Home</button></a>
-    </div>
-    <!-- <div class="product-btn">
-        <button type="button" class="btns">
-            <span class="button-text"> Products </span>
-            <span><i class="fas fa-arrow-right"></i> </span>
-        </button>
-        <form action="" class="btns">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"> <i class="fas fa-search"></i></button>
-        </form>
-    </div> -->
+    <div class="container d-flex flex-row justify-content-start">
+        <!-- <div class="row d-flex flex-row justify-content-start"> -->
+            <!-- <div class="col-1 p-0"> -->
+            <a href="{% url 'home' %}" class=""><img class="PetiteLogo" src="{% static 'assets/HeadLogo.png' %}" alt="petite club logo"></a>
+            <!-- </div> -->
+        <!-- <div class="col-3 p-0"> -->
+            <div class="title">
+                <!-- <p class="title">Petite Club</p> -->
+                <font face="Savoye LET" size="10px" color="#FFFFFF">Petite Club</font></a>
+            </div>
+        <!-- </div> -->
+   
     
-    <form class="form-input" action="{% url 'search' %}" method="post">{% csrf_token %}
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col-lg-12 card-margin">
-                    <div class="card search-form">
-                        <div class="card-body p-0"> -->
-                            <form id="search-form">
-                                <!-- <div class="row">
-                                    <div class="col-12">
-                                        <div class="row no-gutters"> -->
-                                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                                <select name="category_list" class="form-control"
-                                                    id="exampleFormControlSelect1">
-                                                    <option value="Dresses">Dresses</option>
-                                                    <option value="Pants">Pants</option>
-                                                    <option value="Skirts">Skirts</option>
-                                                    <option value="Suits">Suits</option>
-                                                    <option value="Jakets">Jakets and Blazers</option>
-                                                </select>
+        <!-- <div class="product-btn">
+            <button type="button" class="btns">
+                <span class="button-text"> Products </span>
+                <span><i class="fas fa-arrow-right"></i> </span>
+            </button>
+            <form action="" class="btns">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"> <i class="fas fa-search"></i></button>
+            </form>
+        </div> -->
+
+        <!-- <div class="col-6 ms-auto p-0"> -->
+            <form class="form-input ms-auto col-6 search-bar-wrapper" action="{% url 'search' %}" method="post">{% csrf_token %}
+                <div class="container search-bar-container">
+                    <div class="row d-flex align-items-end">
+                        <!-- <div class="col-lg-12 card-margin">
+                            <div class="card search-form">
+                                <div class="card-body p-0"> -->
+                                    <!-- <form id="search-form "> -->
+                                        <!-- <div class="row">
+                                            <div class="col-12">
+                                                <div class="row no-gutters"> -->
+                                                    <div class="col-lg-3 col-md-3 col-sm-12 e-3 ">
+                                                        <div class="category-dropdown-wrapper">
+                                                        <i class="fas fa-angle-down"></i>
+                                                            <select name="category_list" class="form-control btns category-dropdown"
+                                                                id="exampleFormControlSelect1">
+                                                                <option value="Dresses">Dresses</option>
+                                                                <option value="Pants">Pants</option>
+                                                                <option value="Skirts">Skirts</option>
+                                                                <option value="Suits">Suits</option>
+                                                                <option value="Jakets">Jakets and Blazers</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-8 col-md-6 col-sm-12 p-0 s-1">
+                                                        <input type="text" placeholder="Search..." class="btns search-bar" id="search"
+                                                            name="keyword">
+                                                    </div>
+                                                    <div class="col-lg-1 col-md-3 col-sm-12 p-0 search-icon">
+                                                        <a href="{% url 'search' %}">
+                                                        <button type="submit" class="btn btn-base">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-search">
+                                                                <circle cx="11" cy="11" r="8"></circle>
+                                                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                                            </svg>
+                                                        </button>
+                                                        </a>
+                                                    </div>
+                                                <!-- </div>
                                             </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-12 p-0">
-                                                <input type="text" placeholder="Search..." class="btns" id="search"
-                                                    name="keyword">
-                                            </div>
-                                            <div class="col-lg-1 col-md-3 col-sm-12 p-0">
-                                                <a href="{% url 'search' %}">
-                                                <button type="submit" class="btn btn-base">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-search">
-                                                        <circle cx="11" cy="11" r="8"></circle>
-                                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                                    </svg>
-                                                </button>
-                                                </a>
-                                            </div>
-                                        <!-- </div>
-                                    </div>
-                                </div> -->
-                            </form>
-                        <!-- </div>
-                    </div>
-                </div>
-            </div> -->
-    </form>
+                                        </div> -->
+                                    <!-- </form> -->
+                                <!-- </div>
+                            </div> -->
+                        </div>
+                    </div> 
+            </form>
+            <!-- </div> -->
+            <!-- col -->
+        <!-- </div> -->
+        <!-- /row -->
+
+        <div class="nav-btns-right">
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}"><button type="button" class="btns"><i class="fas fa-user-minus"></i>
+                    Logout</button></a>
+            {% else %}
+            <a href="{% url 'register_user' %}"><button type="button" class="btns"> <i class="fas fa-user-plus"></i>
+                    Register</button></a>
+            <a href="{% url 'login' %}"><button type="button" class="btns"> <i class="fas fa-user"></i> Sign in</button></a>
+            {% endif %}
+        
+            <button type="button" class="btns"> <i class="fas fa-heart"></i> Wish</button>
+        </div>
+        
+        <div class="nav-btns-left">
+            <a href="#"><button type="button" class="btns"> <i class="fas fa-exclamation-circle"></i> About</button></a>
+            <a href="{% url 'search' %}"><button type="button" class="btns"> <i class="fas fa-envelope"></i>
+                    Contact</button></a>
+            <a href="{% url 'home' %}"><button type="button" class="btns"> <i class="fas fa-home"></i> Home</button></a>
+        </div>
+
+
+
+    </div>
 </div>
